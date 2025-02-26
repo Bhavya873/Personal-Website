@@ -1,9 +1,250 @@
-@media screen and (max-width: 1200px){
-    #desktop-nav{
-        display: none;
+@media screen and (max-width: 1200px) {
+    #desktop-nav {
+      display: none;
+    }
+  
+    #hamburger-nav {
+      display: flex;
+    }
+  
+    .section-container {
+      flex-direction: row;
+    }
+  
+    .section__pic-container {
+      width: 100%;
+      height: auto;
+    }
+  
+    .about-containers {
+      flex-direction: column;
+    }
+  
+    .details-container {
+      width: 100%;
+    }
+  
+    .timeline ul li {
+      width: 100%;
+      transform: none;
+    }
+  
+    .timeline ul li:nth-child(odd),
+    .timeline ul li:nth-child(even) {
+      float: none;
+      clear: none;
+    }
+  
+    .timeline ul li::before {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .timeline-content .date {
+      position: static;
+    }
+  
+    .timeline:before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .project-img {
+      width: 100%;
+    }
+  
+    .contact-info-upper-container {
+      flex-direction: column;
+    }
+  
+    .contact-info-container {
+      margin: 0.5rem 0;
     }
 
-    #hamburger-nav{
-        display: flex;
+    .section__pic-container {
+      width: 100%;
+      height: auto;
+      max-width: 500px;
     }
+  }
+  
+  @media screen and (max-width: 1000px) {
+    #profile,
+    #about .section-container {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    .section__pic-container {
+      width: 100%;
+      height: auto;
+margin-right: auto;    
 }
+  
+    .section__text,
+    .about-details-container {
+      text-align: center;
+      width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: 1201px) {
+    #about .section-container {
+      flex-direction: row;
+    }
+  
+    .section__pic-container {
+      order: -1;
+      margin-right: 2rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    section {
+      margin: 0 2rem;
+    }
+  
+    .nav-links {
+      font-size: 1rem;
+    }
+  
+    .logo {
+      font-size: 1.5rem;
+    }
+  
+    .section__text__p2 {
+      font-size: 1.25rem;
+    }
+  
+    .title {
+      font-size: 2rem;
+    }
+  
+    .btn {
+      width: 6rem;
+      padding: 0.5rem;
+    }
+  
+    .about-pic {
+      width: 100%;
+    }
+  
+    .experience-sub-title {
+      font-size: 1.25rem;
+    }
+  
+    .project-title {
+      font-size: 1.25rem;
+    }
+  
+    .contact-info-container p {
+      font-size: medium;
+    }
+  }
+
+  /* Default styles for larger screens (above 1000px) */
+#profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5rem;
+  height: auto;
+  padding: 5rem 0;
+}
+
+#profile .section__pic-container {
+  order: -1; /* Places image to the left of text */
+}
+
+#about .section-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#about .section__pic-container {
+  order: 2; /* Places image to the right of text */
+  margin-left: 2rem;
+}
+
+#about .about-details-container {
+  order: 1;
+}
+
+.section__pic-container {
+  width: 400px;
+  height: 400px;
+  margin: auto 0;
+}
+
+/* Media query for screens less than 1000px */
+@media screen and (max-width: 1000px) {
+  #profile {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #profile .section__pic-container {
+    order: -1; /* Keep image above text */
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  #about .section-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #about .section__pic-container {
+    order: -1; /* Places image above text */
+    margin-left: 0;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  #about .about-details-container {
+    order: 2;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .section__text {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Additional responsive adjustments */
+@media screen and (max-width: 768px) {
+  .section__pic-container {
+    max-width: 300px;
+  }
+  
+  section {
+    margin: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section__pic-container {
+    max-width: 280px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+}
+  
