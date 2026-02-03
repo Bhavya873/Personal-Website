@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <div id="scroll-progress"></div>
   <nav id="desktop-nav">
     <div class="logo logo-color">Bhavya Modi</div>
     <div>
@@ -19,6 +20,11 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -35,6 +41,11 @@
         <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
         <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        <li>
+          <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Toggle dark mode" onclick="toggleMenu()">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </li>
       </div>
     </div>
   </nav>
@@ -74,7 +85,7 @@
           <div class="details-container">
             <img src="./assets/experience.png" alt="Experience icon" class="icon" />
             <h3>Experience</h3>
-            <p>4+ years <br />Software Development</p>
+            <p>3+ years <br />Software Development</p>
           </div>
           <div class="details-container">
             <img src="./assets/education.png" alt="Education icon" class="icon" />
@@ -84,11 +95,13 @@
         </div>
         <div class="text-container">
           <p>
-            Hi, I’m Bhavya! I’m a Computer Science and Business student at the University of Waterloo and Wilfrid Laurier with a strong passion for technology and innovation. Beyond academics, I’m an avid sports enthusiast, especially when it comes to cheering on Toronto sport teams. Recently, I’ve taken up snowboarding—despite plenty of tumbles, I’m eager to keep improving and eventually master the slopes, reflecting my work ethic. Overall, I love connecting with new people, sharing ideas, and creating a meaningful impact!</p>
+            Hi, I’m Bhavya. I’m studying Computer Science and Business at the University of Waterloo and Wilfrid Laurier. I love building technology that is practical, reliable, and genuinely useful, and I am especially motivated by teams that move quickly and ship real impact.
+
+            Outside of school and projects, I’m a big Toronto sports fan and I recently picked up snowboarding. I’m still taking plenty of falls, but I keep showing up for the next run and getting a little better each time, which is how I approach my work too. I enjoy meeting new people, sharing ideas, and collaborating on things that make a difference.
+          </p>
         </div>
       </div>
     </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
   </section>
   <section id="experience">
     <p class="section__text__p1">Explore My</p>
@@ -96,6 +109,14 @@
     <div class="container">
       <div class="timeline">
         <ul>
+          <li>
+            <div class="timeline-content">
+              <h3 class="date">September 2025 - December 2025</h3>
+              <h1>Figure AI</h1>
+              <h4>Software Engineering, Internship</h4>
+              <p>Platform Team</p>
+            </div>
+          </li>
           <li>
             <div class="timeline-content">
               <h3 class="date">January 2025 - April 2025</h3>
@@ -131,7 +152,6 @@
         </ul>
       </div>
     </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
   </section>
   <section id="projects">
     <p class="section__text__p1">Browse My Recent</p>
@@ -182,7 +202,6 @@
         </div>
       </div>
     </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
   </section>
   <section id="contact">
     <p class="section__text__p1">Get in Touch</p>
