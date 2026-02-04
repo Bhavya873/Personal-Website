@@ -41,10 +41,9 @@ function updateThemeIcons(theme) {
  * Checks localStorage for saved preference or uses system preference
  */
 function initTheme() {
-    const savedTheme = localStorage.getItem("theme");
-    const theme = savedTheme || "dark";
-    
+    const theme = "dark";
     document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
     updateThemeIcons(theme);
 }
 

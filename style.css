@@ -11,6 +11,7 @@
   --hover-color: grey;
   --hover-underline: rgb(181, 181, 181);
   --section-bg: white;
+  --top-nav-height: 72px;
 }
 
 [data-theme="dark"] {
@@ -65,12 +66,31 @@ a,
   transition: all 300ms ease;
 }
 
-/* DESKTOP NAV */
-nav {
+/* TOP NAV (desktop + hamburger) */
+#desktop-nav,
+#hamburger-nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 17vh;
+  height: var(--top-nav-height);
+  padding: 0.5rem 1.5rem;
+}
+
+/* Sticky top navigation (desktop + mobile) */
+#desktop-nav,
+#hamburger-nav {
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+  background-color: var(--bg-color);
+}
+
+#desktop-nav {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] #desktop-nav {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 .nav-links {
@@ -112,8 +132,6 @@ a:hover {
 /* HAMBURGER MENU */
 #hamburger-nav {
   display: none;
-  position: relative;
-  z-index: 1000;
 }
 
 .hamburger-menu {
