@@ -25,7 +25,7 @@ function toggleTheme() {
     // Update theme icons
     updateThemeIcons(newTheme);
 }
-
+ 
 /**
  * Updates theme toggle icons based on current theme
  */
