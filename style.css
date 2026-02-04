@@ -112,11 +112,14 @@ a:hover {
 /* HAMBURGER MENU */
 #hamburger-nav {
   display: none;
+  position: relative;
+  z-index: 1000;
 }
 
 .hamburger-menu {
   position: relative;
   display: inline-block;
+  z-index: 1001;
 }
 
 .hamburger-icon {
@@ -146,6 +149,7 @@ a:hover {
   transition: all 0.3s ease-in-out;
   border: var(--border-color) 0.1rem solid;
   border-radius: 0.5rem;
+  z-index: 1002;
 }
 
 .menu-links a {
@@ -273,17 +277,38 @@ section.visible {
   justify-content: center;
   margin-top: 1rem;
   gap: 1rem;
+  align-items: center;
 }
 
 /* ICONS */
 .icon {
   cursor: pointer;
   height: 2rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#socials-container img[alt="Email"] {
+  height: 2.3rem;
 }
 
 .icon:hover {
   transform: translateY(-5px) scale(1.1);
+}
+
+/* Make icons adapt to theme - invert in dark mode if needed */
+[data-theme="dark"] .icon:not(.contact-icon) {
+  filter: brightness(0) invert(1);
+}
+
+/* Keep contact icons and social icons as they are (they should have transparent backgrounds) */
+.contact-icon,
+#socials-container .icon {
+  filter: none;
+}
+
+[data-theme="dark"] .contact-icon,
+[data-theme="dark"] #socials-container .icon {
+  filter: brightness(0) invert(1);
 }
 
 /* BUTTONS */
@@ -369,6 +394,7 @@ section.visible {
   transition: all 0.3s ease;
 }
 
+
 .details-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -446,6 +472,97 @@ article .icon {
   cursor: default;
 }
 
+/* EDUCATION SECTION */
+#education {
+  position: relative;
+}
+
+.education-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.education-item {
+  padding: 24px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: var(--border-dark) 0.1rem solid;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .education-item:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.education-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.education-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.education-info h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.education-info h4 {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.education-date {
+  font-size: 12px;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+  letter-spacing: 2px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
+  color: var(--text-secondary);
+}
+
+.university-logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+/* Responsive: Stack education items on smaller screens */
+@media screen and (max-width: 768px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* PROJECTS SECTION */
 #projects {
   position: relative;
@@ -467,7 +584,13 @@ article .icon {
 .project-img {
   border-radius: 2rem;
   width: 90%;
-  height: auto;
+  height: 250px;
+  object-fit: cover;
+}
+
+.project-img[alt="LGC"] {
+  object-fit: contain;
+  height: 200px;
 }
 
 .project-title {
@@ -607,6 +730,42 @@ footer p {
   margin-bottom: 10px;
 }
 
+/* Company Header with Logo */
+.company-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.company-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  padding: 4px;
+  flex-shrink: 0;
+  order: 2;
+  align-self: center;
+}
+
+.company-info {
+  flex: 1;
+  min-width: 0;
+  order: 1;
+}
+
+.company-info h1 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.company-info .date {
+  margin-bottom: 0.25rem;
+}
+
 .timeline-content p {
   font-size: 16px;
   line-height: 30px;
@@ -618,6 +777,53 @@ footer p {
   font-weight: 300;
   margin-bottom: 10px;
   letter-spacing: 2px;
+}
+
+/* Technology Badges */
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: all 0.2s ease;
+}
+
+.tech-badge:hover {
+  background-color: var(--border-color);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .tech-badge {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .tech-badge:hover {
+  background-color: var(--border-color);
+}
+
+/* Project badges styling */
+#projects .tech-badges {
+  justify-content: center;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Timeline badges styling */
+.timeline-content .tech-badges {
+  margin-top: 0.75rem;
 }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
@@ -17,6 +17,7 @@
     <div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -38,6 +39,7 @@
       </div>
       <div class="menu-links">
         <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#education" onclick="toggleMenu()">Education</a></li>
         <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
         <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
@@ -56,9 +58,9 @@
     <div class="section__text">
       <p class="section__text__p1">Hello, I'm</p>
       <h1 class="title">Bhavya Modi</h1>
-      <p class="section__text__p2">Software Developer</p>
+      <p class="section__text__p2">Software Developer seeking 2026 New Grad Roles</p>
       <div class="btn-container">
-        <button class="btn btn-color-2" onclick="window.open('./assets/Bhavya Modi SWE Resume.pdf')">
+        <button class="btn btn-color-2" onclick="window.open('./assets/Bhavya_Modi_Resume.pdf')">
           Download CV
         </button>
         <button class="btn btn-color-1" onclick="location.href='./#contact'">
@@ -66,6 +68,8 @@
         </button>
       </div>
       <div id="socials-container">
+        <img src="./assets/email.png" alt="Email" class="icon"
+          onclick="location.href='mailto:bhavyamodi873@gmail.com'" />
         <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon"
           onclick="location.href='https://www.linkedin.com/in/bhavyamodi/'" />
         <img src="./assets/github.png" alt="My Github profile" class="icon"
@@ -83,14 +87,12 @@
       <div class="about-details-container">
         <div class="about-containers">
           <div class="details-container">
-            <img src="./assets/experience.png" alt="Experience icon" class="icon" />
             <h3>Experience</h3>
             <p>3+ years <br />Software Development</p>
           </div>
           <div class="details-container">
-            <img src="./assets/education.png" alt="Education icon" class="icon" />
-            <h3>Education</h3>
-            <p>BCS from University of Waterloo<br />BBA from University of Wilfrid Laurier</p>
+            <h3>Expertise</h3>
+            <p>Full-Stack Development<br />Infrastructure<br />Data Engineering</p>
           </div>
         </div>
         <div class="text-container">
@@ -103,6 +105,34 @@
       </div>
     </div>
   </section>
+  <section id="education">
+    <p class="section__text__p1">My Academic</p>
+    <h1 class="title">Education</h1>
+    <div class="education-container">
+      <div class="education-grid">
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-info">
+              <h3 class="education-date">2021 - 2026</h3>
+              <h1>Bachelor of Computer Science</h1>
+              <h4>University of Waterloo</h4>
+            </div>
+            <img src="./assets/waterloo.svg" alt="University of Waterloo logo" class="university-logo" />
+          </div>
+        </div>
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-info">
+              <h3 class="education-date">2021 - 2026</h3>
+              <h1>Bachelor of Business Administration</h1>
+              <h4>Wilfrid Laurier University</h4>
+            </div>
+            <img src="./assets/wilfrid-laurier.jpg" alt="Wilfrid Laurier University logo" class="university-logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section id="experience">
     <p class="section__text__p1">Explore My</p>
     <h1 class="title">Experience</h1>
@@ -111,42 +141,94 @@
         <ul>
           <li>
             <div class="timeline-content">
-              <h3 class="date">September 2025 - December 2025</h3>
-              <h1>Figure AI</h1>
+              <div class="company-header">
+                <img src="./assets/company-logos/Figure-ai-logo.svg" alt="Figure AI logo" class="company-logo" />
+                <div class="company-info">
+                  <h3 class="date">September 2025 - December 2025</h3>
+                  <h1>Figure AI</h1>
+                </div>
+              </div>
               <h4>Software Engineering, Internship</h4>
               <p>Platform Team</p>
+              <div class="tech-badges">
+                <span class="tech-badge">c++</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">TypeScript/React</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Redis</span>
+              </div>
             </div>
           </li>
           <li>
             <div class="timeline-content">
-              <h3 class="date">January 2025 - April 2025</h3>
-              <h1>theScore</h1>
+              <div class="company-header">
+                <img src="./assets/company-logos/thescore.png" alt="theScore logo" class="company-logo" />
+                <div class="company-info">
+                  <h3 class="date">January 2025 - April 2025</h3>
+                  <h1>theScore</h1>
+                </div>
+              </div>
               <h4>Software Engineering, Internship</h4>
               <p>Backoffice Team</p>
+              <div class="tech-badges">
+                <span class="tech-badge">Elixir</span>
+                <span class="tech-badge"> React</span>
+                <span class="tech-badge">GraphQL</span>
+              </div>
             </div>
           </li>
           <li>
             <div class="timeline-content">
-              <h3 class="date">January 2024 - April 2024</h3>
-              <h1>Dayforce</h1>
+              <div class="company-header">
+                <img src="./assets/company-logos/dayforce.png" alt="Dayforce logo" class="company-logo" />
+                <div class="company-info">
+                  <h3 class="date">January 2024 - April 2024</h3>
+                  <h1>Dayforce</h1>
+                </div>
+              </div>
               <h4>Software Developer, Internship</h4>
               <p>Tax and Payments Team</p>
+              <div class="tech-badges">
+                <span class="tech-badge">C#/ASP.NET</span>
+                <span class="tech-badge">Java/Kafka</span>
+                <span class="tech-badge">NoSQL</span>
+              </div>
             </div>
           </li>
           <li>
             <div class="timeline-content">
-              <h3 class="date">January 2023 - April 2023</h3>
-              <h1>CMiC</h1>
+              <div class="company-header">
+                <img src="./assets/company-logos/cmic.png" alt="CMiC logo" class="company-logo" />
+                <div class="company-info">
+                  <h3 class="date">January 2023 - April 2023</h3>
+                  <h1>CMiC</h1>
+                </div>
+              </div>
               <h4>Software Engineering, Internship</h4>
               <p>Application Development Framework Team</p>
+              <div class="tech-badges">
+                <span class="tech-badge">Java</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Oracle DB</span>
+              </div>
             </div>
           </li>
           <li>
             <div class="timeline-content">
-              <h3 class="date">May 2022 - August 2022</h3>
-              <h1>CMiC</h1>
+              <div class="company-header">
+                <img src="./assets/company-logos/cmic.png" alt="CMiC logo" class="company-logo" />
+                <div class="company-info">
+                  <h3 class="date">May 2022 - August 2022</h3>
+                  <h1>CMiC</h1>
+                </div>
+              </div>
               <h4>Junior Software Developer, Internship</h4>
               <p>Application Development Framework Team</p>
+              <div class="tech-badges">
+                <span class="tech-badge">Java</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Oracle DB</span>
+              </div>
             </div>
           </li>
         </ul>
@@ -163,6 +245,11 @@
             <img src="./assets/project-1.png" alt="Pocket CPR" class="project-img" />
           </div>
           <h2 class="experience-sub-title project-title">Pocket CPR</h2>
+          <div class="tech-badges">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">MongoDB</span>
+          </div>
           <div class="btn-container">
             <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/Pocket_CPR'">
               Github
@@ -174,9 +261,14 @@
         </div>
         <div class="details-container color-container">
           <div class="article-container">
-            <img src="./assets/project-2.png" alt="Digit Recognition" class="project-img" />
+            <img src="./assets/nueral_net.jpg" alt="Digit Recognition" class="project-img" />
           </div>
           <h2 class="experience-sub-title project-title">Classical vs Deep learning</h2>
+          <div class="tech-badges">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">TensorFlow</span>
+            <span class="tech-badge">Scikit-learn</span>
+          </div>
           <div class="btn-container">
             <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/digit-recognition-model-comparision'">
               Github
@@ -188,14 +280,19 @@
         </div>
         <div class="details-container color-container">
           <div class="article-container">
-            <img src="./assets/project-3.png" alt="LGC" class="project-img"/>
+            <img src="./assets/DIB_Canada.png" alt="LGC" class="project-img"/>
           </div>
-          <h2 class="experience-sub-title project-title">LeetCodeGuide (WIP)</h2>
+          <h2 class="experience-sub-title project-title">DIB Canada </h2>
+          <div class="tech-badges">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">Supabase</span>
+          </div>
           <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873'">
+            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/DIB-consulting'">
               Github
             </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873'">
+            <button class="btn btn-color-2 project-btn" onclick="location.href='https://dibcanada.com/'">
               Live Demo
             </button>
           </div>
@@ -209,7 +306,7 @@
     <div class="contact-info-upper-container">
       <div class="contact-info-container">
         <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-        <p><a href="mailto:b3modi@uwaterloo.com">b3modi@uwaterloo.ca</a></p>
+        <p><a href="mailto:bhavyamodi873@gmail.com">bhavyamodi873@gmail.com</a></p>
       </div>
       <div class="contact-info-container">
         <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
@@ -222,6 +319,7 @@
       <div class="nav-links-container">
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
