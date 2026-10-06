@@ -1,332 +1,269 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>Bhavya Modi — Software Engineer</title>
+  <meta name="description" content="Bhavya Modi — software engineer and recent new grad from the University of Waterloo and Wilfrid Laurier (Computer Science and Business)." />
+  <script>
+    try {
+      const saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+    } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Young+Serif&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="mediaqueries.css" />
 </head>
 
 <body>
   <div id="scroll-progress"></div>
-  <nav id="desktop-nav">
-    <div class="logo logo-color">Bhavya Modi</div>
-    <div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
-          </button>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <nav id="hamburger-nav">
-    <div class="logo logo-color">Bhavya Modi</div>
-    <div class="hamburger-menu">
-      <div class="hamburger-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="menu-links">
-        <li><a href="#about" onclick="toggleMenu()">About</a></li>
-        <li><a href="#education" onclick="toggleMenu()">Education</a></li>
-        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        <li>
-          <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Toggle dark mode" onclick="toggleMenu()">
-            <span class="theme-icon">🌙</span>
-          </button>
-        </li>
-      </div>
-    </div>
-  </nav>
-  <section id="profile">
-    <div class="section__pic-container">
-      <img src="./assets/profile-pic.png" alt="Bhavya Modi profile picture" />
-    </div>
-    <div class="section__text">
-      <p class="section__text__p1">Hello, I'm</p>
-      <h1 class="title">Bhavya Modi</h1>
-      <p class="section__text__p2">Software Engineer seeking 2026 New Grad Roles</p>
-      <div class="btn-container">
-        <button class="btn btn-color-2" onclick="window.open('./assets/Bhavya_Modi_Resume.pdf')">
-          Download CV
-        </button>
-        <button class="btn btn-color-1" onclick="location.href='./#contact'">
-          Contact Info
-        </button>
-      </div>
-      <div id="socials-container">
-        <img src="./assets/email.png" alt="Email" class="icon"
-          onclick="location.href='mailto:bhavyamodi873@gmail.com'" />
-        <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon"
-          onclick="location.href='https://www.linkedin.com/in/bhavyamodi/'" />
-        <img src="./assets/github.png" alt="My Github profile" class="icon"
-          onclick="location.href='https://github.com/Bhavya873'" />
-      </div>
-    </div>
-  </section>
-  <section id="about">
-    <p class="section__text__p1">Get To Know More</p>
-    <h1 class="title">About Me</h1>
-    <div class="section-container">
-      <div class="section__pic-container">
-        <img src="./assets/about-pic.png" alt="Profile picture" class="about-pic" />
-      </div>
-      <div class="about-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h3>Experience</h3>
-            <p>3+ years <br />Software Development</p>
-          </div>
-          <div class="details-container">
-            <h3>Expertise</h3>
-            <p>Full-Stack Development<br />Infrastructure<br />Data Engineering</p>
-          </div>
-        </div>
-        <div class="text-container">
-          <p>
-            Hi, I’m Bhavya. I’m studying Computer Science and Business at the University of Waterloo and Wilfrid Laurier. I love building technology that is practical, reliable, and genuinely useful, and I am especially motivated by teams that move quickly and ship real impact.
 
-            Outside of school and projects, I’m a big Toronto sports fan and I recently picked up snowboarding. I’m still taking plenty of falls, but I keep showing up for the next run and getting a little better each time, which is how I approach my work too. I enjoy meeting new people, sharing ideas, and collaborating on things that make a difference.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="education">
-    <p class="section__text__p1">My Academic</p>
-    <h1 class="title">Education</h1>
-    <div class="education-container">
-      <div class="education-grid">
-        <div class="education-item">
-          <div class="education-header">
-            <div class="education-info">
-              <h3 class="education-date">2021 - 2026</h3>
-              <h1>Bachelor of Computer Science</h1>
-              <h4>University of Waterloo</h4>
-            </div>
-            <img src="./assets/waterloo.svg" alt="University of Waterloo logo" class="university-logo" />
-          </div>
-        </div>
-        <div class="education-item">
-          <div class="education-header">
-            <div class="education-info">
-              <h3 class="education-date">2021 - 2026</h3>
-              <h1>Bachelor of Business Administration</h1>
-              <h4>Wilfrid Laurier University</h4>
-            </div>
-            <img src="./assets/wilfrid-laurier.jpg" alt="Wilfrid Laurier University logo" class="university-logo" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="experience">
-    <p class="section__text__p1">Explore My</p>
-    <h1 class="title">Experience</h1>
-    <div class="container">
-      <div class="timeline">
-        <ul>
-          <li>
-            <div class="timeline-content">
-              <div class="company-header">
-                <img src="./assets/company-logos/Figure-ai-logo.svg" alt="Figure AI logo" class="company-logo" />
-                <div class="company-info">
-                  <h3 class="date">September 2025 - December 2025</h3>
-                  <h1>Figure AI</h1>
-                </div>
-              </div>
-              <h4>Software Engineering, Internship</h4>
-              <p>Platform Team</p>
-              <div class="tech-badges">
-                <span class="tech-badge">c++</span>
-                <span class="tech-badge">Python</span>
-                <span class="tech-badge">TypeScript/React</span>
-                <span class="tech-badge">PostgreSQL</span>
-                <span class="tech-badge">Redis</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-content">
-              <div class="company-header">
-                <img src="./assets/company-logos/thescore.png" alt="theScore logo" class="company-logo" />
-                <div class="company-info">
-                  <h3 class="date">January 2025 - April 2025</h3>
-                  <h1>theScore</h1>
-                </div>
-              </div>
-              <h4>Software Engineering, Internship</h4>
-              <p>Backoffice Team</p>
-              <div class="tech-badges">
-                <span class="tech-badge">Elixir</span>
-                <span class="tech-badge"> React</span>
-                <span class="tech-badge">GraphQL</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-content">
-              <div class="company-header">
-                <img src="./assets/company-logos/dayforce.png" alt="Dayforce logo" class="company-logo" />
-                <div class="company-info">
-                  <h3 class="date">January 2024 - April 2024</h3>
-                  <h1>Dayforce</h1>
-                </div>
-              </div>
-              <h4>Software Developer, Internship</h4>
-              <p>Tax and Payments Team</p>
-              <div class="tech-badges">
-                <span class="tech-badge">C#/ASP.NET</span>
-                <span class="tech-badge">Java/Kafka</span>
-                <span class="tech-badge">NoSQL</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-content">
-              <div class="company-header">
-                <img src="./assets/company-logos/cmic.png" alt="CMiC logo" class="company-logo" />
-                <div class="company-info">
-                  <h3 class="date">January 2023 - April 2023</h3>
-                  <h1>CMiC</h1>
-                </div>
-              </div>
-              <h4>Software Engineering, Internship</h4>
-              <p>Application Development Framework Team</p>
-              <div class="tech-badges">
-                <span class="tech-badge">Java</span>
-                <span class="tech-badge">JavaScript</span>
-                <span class="tech-badge">Oracle DB</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-content">
-              <div class="company-header">
-                <img src="./assets/company-logos/cmic.png" alt="CMiC logo" class="company-logo" />
-                <div class="company-info">
-                  <h3 class="date">May 2022 - August 2022</h3>
-                  <h1>CMiC</h1>
-                </div>
-              </div>
-              <h4>Junior Software Developer, Internship</h4>
-              <p>Application Development Framework Team</p>
-              <div class="tech-badges">
-                <span class="tech-badge">Java</span>
-                <span class="tech-badge">JavaScript</span>
-                <span class="tech-badge">Oracle DB</span>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <section id="projects">
-    <p class="section__text__p1">Browse My Recent</p>
-    <h1 class="title">Projects</h1>
-    <div class="experience-details-container">
-      <div class="about-containers">
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/project-1.png" alt="Pocket CPR" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">Pocket CPR</h2>
-          <div class="tech-badges">
-            <span class="tech-badge">React</span>
-            <span class="tech-badge">Node.js</span>
-            <span class="tech-badge">MongoDB</span>
-          </div>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/Pocket_CPR'">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/Pocket_CPR'">
-              Live Demo
-            </button>
-          </div>
-        </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/nueral_net.jpg" alt="Digit Recognition" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">Classical vs Deep learning</h2>
-          <div class="tech-badges">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">TensorFlow</span>
-            <span class="tech-badge">Scikit-learn</span>
-          </div>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/digit-recognition-model-comparision'">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/digit-recognition-model-comparision'">
-              Live Demo
-            </button>
-          </div>
-        </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/DIB_Canada.png" alt="LGC" class="project-img"/>
-          </div>
-          <h2 class="experience-sub-title project-title">DIB Canada </h2>
-          <div class="tech-badges">
-            <span class="tech-badge">React</span>
-            <span class="tech-badge">TypeScript</span>
-            <span class="tech-badge">Supabase</span>
-          </div>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Bhavya873/DIB-consulting'">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://dibcanada.com/'">
-              Live Demo
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="contact">
-    <p class="section__text__p1">Get in Touch</p>
-    <h1 class="title">Contact Me</h1>
-    <div class="contact-info-upper-container">
-      <div class="contact-info-container">
-        <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-        <p><a href="mailto:bhavyamodi873@gmail.com">bhavyamodi873@gmail.com</a></p>
-      </div>
-      <div class="contact-info-container">
-        <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-        <p><a href="https://www.linkedin.com/in/bhavyamodi/">LinkedIn</a></p>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <nav>
-      <div class="nav-links-container">
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+  <header class="site-header">
+    <nav class="nav wrap">
+      <a href="#top" class="logo">Bhavya Modi</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">about</a></li>
+        <li><a href="#education">education</a></li>
+        <li><a href="#experience">work</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" />
+          </svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false"
+          aria-controls="nav-links">
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
+  </header>
+
+  <main id="top">
+    <section id="profile" class="wrap hero">
+      <div class="hero__photo reveal">
+        <img src="./assets/profile-photo.jpg" alt="Portrait of Bhavya Modi" width="819" height="1024" />
+      </div>
+      <div class="hero__text">
+        <p class="status reveal"><span class="dot"></span>Open to 2026 new grad roles</p>
+        <h1 class="hero__name reveal">Bhavya Modi</h1>
+        <p class="hero__intro reveal">
+          Recent new grad from the University of Waterloo and Wilfrid Laurier, with degrees in
+          Computer Science and Business. These days I build software for things that move and
+          occasionally break.
+        </p>
+        <ul class="link-row reveal">
+          <li><a class="link" href="./assets/Bhavya_Modi_Resume.pdf?v=2026-10" target="_blank" rel="noopener">Resume ↗</a></li>
+          <li><a class="link" href="mailto:bhavyamodi873@gmail.com">Email ↗</a></li>
+          <li><a class="link" href="https://www.linkedin.com/in/bhavyamodi/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a class="link" href="https://github.com/Bhavya873" target="_blank" rel="noopener">GitHub ↗</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about" class="wrap">
+      <h2 class="section-title reveal"><span class="section-num">01</span>About</h2>
+      <div class="about">
+        <div class="about__text reveal">
+          <p>
+            I’m Bhavya. I just finished a double degree, Computer Science at Waterloo and Business at Laurier,
+            and spent most of my co-op terms building software at companies like Figure AI, theScore, and Dayforce.
+          </p>
+          <p>
+            The work I enjoy most is software that interacts with hardware. There’s something satisfying about
+            writing code and watching a robot, a sensor, or a device actually respond to it. I like small teams
+            that move quickly, and I care a lot about building things that hold up once they’re out in the real world.
+          </p>
+          <p>
+            Outside of work, I follow pretty much every Toronto team and recently picked up snowboarding.
+            I still fall a lot, but I get a little better every run.
+          </p>
+          <dl class="facts">
+            <div>
+              <dt>Experience</dt>
+              <dd>3+ years of software development</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Robotics infrastructure | AI automation | Data pipelines</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="about__photo reveal">
+          <img src="./assets/about-photo.jpg" alt="Bhavya snowboarding" width="1172" height="1600" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="wrap">
+      <h2 class="section-title reveal"><span class="section-num">02</span>Education</h2>
+      <ol class="ledger">
+        <li class="ledger__row reveal">
+          <span class="ledger__date">2021 – 2026</span>
+          <div class="ledger__body">
+            <h3 class="ledger__title">Bachelor of Computer Science</h3>
+            <p class="ledger__sub">University of Waterloo</p>
+          </div>
+          <span class="ledger__logo"><img src="./assets/waterloo.svg" alt="University of Waterloo logo" /></span>
+        </li>
+        <li class="ledger__row reveal">
+          <span class="ledger__date">2021 – 2026</span>
+          <div class="ledger__body">
+            <h3 class="ledger__title">Bachelor of Business Administration</h3>
+            <p class="ledger__sub">Wilfrid Laurier University</p>
+          </div>
+          <span class="ledger__logo"><img src="./assets/wilfrid-laurier.jpg" alt="Wilfrid Laurier University logo" /></span>
+        </li>
+      </ol>
+    </section>
+
+    <section id="experience" class="wrap">
+      <h2 class="section-title reveal"><span class="section-num">03</span>Experience</h2>
+      <ol class="ledger">
+        <li class="ledger__row reveal">
+          <span class="ledger__date">Sep – Dec 2025</span>
+          <div class="ledger__body">
+            <h3 class="ledger__title">Figure AI</h3>
+            <p class="ledger__sub">Software Engineering Intern · Platform</p>
+            <ul class="tags">
+              <li>C++</li><li>Python</li><li>TypeScript</li><li>React</li><li>PostgreSQL</li><li>Redis</li>
+            </ul>
+          </div>
+          <span class="ledger__logo"><img src="./assets/company-logos/Figure-ai-logo.svg" alt="Figure AI logo" /></span>
+        </li>
+        <li class="ledger__row reveal">
+          <span class="ledger__date">Jan – Apr 2025</span>
+          <div class="ledger__body">
+            <h3 class="ledger__title">theScore</h3>
+            <p class="ledger__sub">Software Engineering Intern · Backoffice</p>
+            <ul class="tags">
+              <li>Elixir</li><li>React</li><li>GraphQL</li>
+            </ul>
+          </div>
+          <span class="ledger__logo"><img src="./assets/company-logos/thescore.png" alt="theScore logo" /></span>
+        </li>
+        <li class="ledger__row reveal">
+          <span class="ledger__date">Jan – Apr 2024</span>
+          <div class="ledger__body">
+            <h3 class="ledger__title">Dayforce</h3>
+            <p class="ledger__sub">Software Developer Intern · Tax and Payments</p>
+            <ul class="tags">
+              <li>C#</li><li>ASP.NET</li><li>Java</li><li>Kafka</li><li>NoSQL</li>
+            </ul>
+          </div>
+          <span class="ledger__logo"><img src="./assets/company-logos/dayforce.png" alt="Dayforce logo" /></span>
+        </li>
+        <li class="ledger__row reveal">
+          <span class="ledger__date">Jan – Apr 2023</span>
+          <div class="ledger__body">
+            <h3 class="ledger__title">CMiC</h3>
+            <p class="ledger__sub">Software Engineering Intern · Application Development Framework</p>
+            <ul class="tags">
+              <li>Java</li><li>JavaScript</li><li>Oracle DB</li>
+            </ul>
+          </div>
+          <span class="ledger__logo"><img src="./assets/company-logos/cmic.png" alt="CMiC logo" /></span>
+        </li>
+        <li class="ledger__row reveal">
+          <span class="ledger__date">May – Aug 2022</span>
+          <div class="ledger__body">
+            <h3 class="ledger__title">CMiC</h3>
+            <p class="ledger__sub">Junior Software Developer Intern · Application Development Framework</p>
+            <ul class="tags">
+              <li>Java</li><li>JavaScript</li><li>Oracle DB</li>
+            </ul>
+          </div>
+          <span class="ledger__logo"><img src="./assets/company-logos/cmic.png" alt="CMiC logo" /></span>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projects" class="wrap">
+      <h2 class="section-title reveal"><span class="section-num">04</span>Projects</h2>
+      <div class="projects">
+        <article class="project reveal">
+          <div class="project__media">
+            <img src="./assets/warden-cover.jpg" alt="Blueprint-style sketch of warehouse robots on a grid" loading="lazy" />
+          </div>
+          <h3 class="project__title">Warden</h3>
+          <ul class="tags">
+            <li>Rust</li><li>Python</li><li>PyO3</li><li>WebSockets</li>
+          </ul>
+          <div class="project__links">
+            <a class="link" href="https://github.com/Bhavya873/Warden" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="link" href="https://warden-warehouse-robot.netlify.app/" target="_blank" rel="noopener">Live ↗</a>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div class="project__media">
+            <img src="./assets/project-1.png" alt="Pocket CPR screenshot" />
+            <span class="project__award"><span class="project__award-place">1st Place</span>NHacks VI</span>
+          </div>
+          <h3 class="project__title">Pocket CPR</h3>
+          <ul class="tags">
+            <li>React</li><li>Node.js</li><li>MongoDB</li>
+          </ul>
+          <div class="project__links">
+            <a class="link" href="https://github.com/Bhavya873/Pocket_CPR" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div class="project__media project__media--contain">
+            <img src="./assets/nueral_net.jpg" alt="Neural network illustration" />
+          </div>
+          <h3 class="project__title">Classical vs Deep Learning</h3>
+          <ul class="tags">
+            <li>Python</li><li>TensorFlow</li><li>Scikit-learn</li>
+          </ul>
+          <div class="project__links">
+            <a class="link" href="https://github.com/Bhavya873/digit-recognition-model-comparision" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div class="project__media project__media--contain">
+            <img src="./assets/DIB_Canada.png" alt="DIB Canada logo" />
+          </div>
+          <h3 class="project__title">DIB Canada</h3>
+          <ul class="tags">
+            <li>React</li><li>TypeScript</li><li>Supabase</li>
+          </ul>
+          <div class="project__links">
+            <a class="link" href="https://github.com/Bhavya873/DIB-consulting" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="link" href="https://dibcanada.com/" target="_blank" rel="noopener">Live ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap">
+      <h2 class="section-title reveal"><span class="section-num">05</span>Contact</h2>
+      <div class="contact reveal">
+        <p class="contact__lead">Let’s talk<span class="accent">.</span></p>
+        <a class="contact__email" href="mailto:bhavyamodi873@gmail.com">bhavyamodi873@gmail.com</a>
+        <ul class="link-row">
+          <li><a class="link" href="https://www.linkedin.com/in/bhavyamodi/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a class="link" href="https://github.com/Bhavya873" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a class="link" href="./assets/Bhavya_Modi_Resume.pdf?v=2026-10" target="_blank" rel="noopener">Resume ↗</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <span>© 2026 Bhavya Modi</span>
+    <a href="#top" class="footer__top">Back to top ↑</a>
   </footer>
+
   <script src="script.js"></script>
 </body>
 

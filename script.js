@@ -1,135 +1,88 @@
+const root = document.documentElement;
+root.classList.add("js");
+
 /**
  * Toggles the mobile menu open/closed state
- * Adds or removes the 'open' class to menu and hamburger icon
  */
-function toggleMenu() {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
-    
-    menu.classList.toggle("open");
-    icon.classList.toggle("open");
+function toggleMenu(force) {
+    const menu = document.getElementById("nav-links");
+    const button = document.getElementById("menu-toggle");
+    const open = typeof force === "boolean" ? force : !menu.classList.contains("open");
+
+    menu.classList.toggle("open", open);
+    button.setAttribute("aria-expanded", String(open));
+    button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 }
 
 /**
- * Toggles dark mode on/off
- * Saves preference to localStorage
+ * Returns the theme currently in effect (explicit choice or system preference)
+ */
+function currentTheme() {
+    const explicit = root.getAttribute("data-theme");
+    if (explicit) return explicit;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+/**
+ * Toggles dark mode on/off and remembers the choice
  */
 function toggleTheme() {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    
-    html.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-    
-    // Update theme icons
-    updateThemeIcons(newTheme);
-}
- 
-/**
- * Updates theme toggle icons based on current theme
- */
-function updateThemeIcons(theme) {
-    const icons = document.querySelectorAll(".theme-icon");
-    icons.forEach(icon => {
-        icon.textContent = theme === "dark" ? "☀️" : "🌙";
-    });
-}
-
-/**
- * Initializes theme on page load
- * Checks localStorage for saved preference or uses system preference
- */
-function initTheme() {
-    const theme = "dark";
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-    updateThemeIcons(theme);
+    const newTheme = currentTheme() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", newTheme);
+    try {
+        localStorage.setItem("theme", newTheme);
+    } catch (e) {}
 }
 
 /**
  * Updates scroll progress indicator
  */
 function updateScrollProgress() {
-    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (window.scrollY / windowHeight) * 100;
+    const max = root.scrollHeight - root.clientHeight;
+    const progress = max > 0 ? window.scrollY / max : 0;
     const progressBar = document.getElementById("scroll-progress");
     if (progressBar) {
-        progressBar.style.width = scrolled + "%";
+        progressBar.style.transform = `scaleX(${progress})`;
     }
 }
 
 /**
- * Observes sections for fade-in animation on scroll
+ * Reveals elements as they scroll into view
  */
 function initScrollAnimations() {
-    const sections = document.querySelectorAll("section");
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    const items = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+        items.forEach(item => item.classList.add("visible"));
+        return;
+    }
 
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, observerOptions);
+        // Stagger items that enter together, top to bottom
+        entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+            .forEach((entry, i) => {
+                const item = entry.target;
+                item.style.transitionDelay = `${Math.min(i, 6) * 70}ms`;
+                item.classList.add("visible");
+                observer.unobserve(item);
+                // Clear the delay so hover transitions aren't held back afterwards
+                setTimeout(() => { item.style.transitionDelay = ""; }, 1200 + i * 70);
+            });
+    }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    items.forEach(item => observer.observe(item));
 }
 
-/**
- * Typing animation for the name
- */
-function initTypingAnimation() {
-    const nameElement = document.querySelector("#profile .title");
-    if (!nameElement) return;
-    
-    const text = nameElement.textContent;
-    nameElement.textContent = "";
-    nameElement.style.borderRight = "2px solid";
-    nameElement.style.animation = "blink 1s infinite";
-    
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            nameElement.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, 100);
-        } else {
-            setTimeout(() => {
-                nameElement.style.borderRight = "none";
-                nameElement.style.animation = "none";
-            }, 500);
-        }
-    }
-    
-    setTimeout(type, 500);
-}
-
-// Initialize theme on page load
 document.addEventListener("DOMContentLoaded", () => {
-    initTheme();
     initScrollAnimations();
-    initTypingAnimation();
-    
-    // Add event listeners to theme toggle buttons
-    const themeToggle = document.getElementById("theme-toggle");
-    const themeToggleMobile = document.getElementById("theme-toggle-mobile");
-    
-    if (themeToggle) {
-        themeToggle.addEventListener("click", toggleTheme);
-    }
-    
-    if (themeToggleMobile) {
-        themeToggleMobile.addEventListener("click", toggleTheme);
-    }
-    
-    // Update scroll progress on scroll
-    window.addEventListener("scroll", updateScrollProgress);
-    updateScrollProgress(); // Initial call
+
+    document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
+    document.getElementById("menu-toggle").addEventListener("click", () => toggleMenu());
+    document.querySelectorAll("#nav-links a").forEach(link => {
+        link.addEventListener("click", () => toggleMenu(false));
+    });
+
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    updateScrollProgress();
 });
