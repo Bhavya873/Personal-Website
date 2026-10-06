@@ -7,6 +7,16 @@
   <title>Bhavya Modi — Software Engineer</title>
   <meta name="description" content="Bhavya Modi — software engineer and recent new grad from the University of Waterloo and Wilfrid Laurier (Computer Science and Business)." />
   <script>
+    // Season boundaries follow the equinoxes and solstices (northern hemisphere)
+    window.seasonForDate = function (date) {
+      const d = date || new Date();
+      const md = (d.getMonth() + 1) * 100 + d.getDate();
+      if (md >= 320 && md < 621) return "spring";
+      if (md >= 621 && md < 922) return "summer";
+      if (md >= 922 && md < 1221) return "fall";
+      return "winter";
+    };
+    document.documentElement.setAttribute("data-season", window.seasonForDate());
     try {
       const saved = localStorage.getItem("theme");
       if (saved) document.documentElement.setAttribute("data-theme", saved);
@@ -21,6 +31,7 @@
 </head>
 
 <body>
+  <canvas id="season-canvas" aria-hidden="true"></canvas>
   <div id="scroll-progress"></div>
 
   <header class="site-header">
@@ -34,6 +45,25 @@
         <li><a href="#contact">contact</a></li>
       </ul>
       <div class="nav-actions">
+        <div class="season-picker" id="season-picker">
+          <button class="season-btn" id="season-btn" aria-haspopup="listbox" aria-expanded="false"
+            aria-controls="season-menu" aria-label="Change season">
+            <span class="season-btn__icon" aria-hidden="true"></span>
+            <span class="season-btn__label"></span>
+            <svg class="season-btn__caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">
+              <path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="season-menu" id="season-menu" role="listbox" aria-label="Season">
+            <li role="option" tabindex="-1" data-value="auto"><span class="season-option__icon"></span>Auto<span
+                class="season-option__hint"></span></li>
+            <li role="option" tabindex="-1" data-value="spring"><span class="season-option__icon"></span>Spring</li>
+            <li role="option" tabindex="-1" data-value="summer"><span class="season-option__icon"></span>Summer</li>
+            <li role="option" tabindex="-1" data-value="fall"><span class="season-option__icon"></span>Fall</li>
+            <li role="option" tabindex="-1" data-value="winter"><span class="season-option__icon"></span>Winter</li>
+          </ul>
+        </div>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
             <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5" />
@@ -57,10 +87,8 @@
       <div class="hero__text">
         <p class="status reveal"><span class="dot"></span>Open to 2026 new grad roles</p>
         <h1 class="hero__name reveal">Bhavya Modi</h1>
-        <p class="hero__intro reveal">
-          Recent new grad from the University of Waterloo and Wilfrid Laurier, with degrees in
-          Computer Science and Business. These days I build software for things that move and
-          occasionally break.
+        <p class="hero__intro tagline reveal">
+          <span>Software engineer</span><span>Always learning</span><span>Full-time Leafs fan</span>
         </p>
         <ul class="link-row reveal">
           <li><a class="link" href="./assets/Bhavya_Modi_Resume.pdf?v=2026-10" target="_blank" rel="noopener">Resume ↗</a></li>
@@ -76,13 +104,9 @@
       <div class="about">
         <div class="about__text reveal">
           <p>
-            I’m Bhavya. I just finished a double degree, Computer Science at Waterloo and Business at Laurier,
-            and spent most of my co-op terms building software at companies like Figure AI, theScore, and Dayforce.
-          </p>
-          <p>
-            The work I enjoy most is software that interacts with hardware. There’s something satisfying about
-            writing code and watching a robot, a sensor, or a device actually respond to it. I like small teams
-            that move quickly, and I care a lot about building things that hold up once they’re out in the real world.
+            I’m Bhavya (<em class="say">BUHV-yuh</em>), a recent Computer Science and Business grad from
+            Waterloo and Laurier. Across five internships at Figure AI, theScore, Dayforce, and CMiC, I’ve built
+            robotics infrastructure, backend services, and data pipelines, mostly in Python, C++, TypeScript, and Java.
           </p>
           <p>
             Outside of work, I follow pretty much every Toronto team and recently picked up snowboarding.
@@ -247,24 +271,130 @@
 
     <section id="contact" class="wrap">
       <h2 class="section-title reveal"><span class="section-num">05</span>Contact</h2>
-      <div class="contact reveal">
-        <p class="contact__lead">Let’s talk<span class="accent">.</span></p>
-        <a class="contact__email" href="mailto:bhavyamodi873@gmail.com">bhavyamodi873@gmail.com</a>
-        <ul class="link-row">
-          <li><a class="link" href="https://www.linkedin.com/in/bhavyamodi/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-          <li><a class="link" href="https://github.com/Bhavya873" target="_blank" rel="noopener">GitHub ↗</a></li>
-          <li><a class="link" href="./assets/Bhavya_Modi_Resume.pdf?v=2026-10" target="_blank" rel="noopener">Resume ↗</a></li>
+      <div class="contact">
+        <div class="contact__main reveal">
+          <p class="contact__lead">Ping me<span class="accent">.</span></p>
+          <p class="contact__note">Open to 2026 new grad roles. Email is the quickest way to reach me.</p>
+          <a class="contact__email" href="mailto:bhavyamodi873@gmail.com">bhavyamodi873@gmail.com</a>
+        </div>
+        <ul class="contact__links reveal">
+          <li>
+            <a href="https://www.linkedin.com/in/bhavyamodi/" target="_blank" rel="noopener">
+              <span class="contact__label">LinkedIn</span>
+              <span class="contact__handle">/in/bhavyamodi</span>
+              <span class="contact__arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Bhavya873" target="_blank" rel="noopener">
+              <span class="contact__label">GitHub</span>
+              <span class="contact__handle">@Bhavya873</span>
+              <span class="contact__arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="./assets/Bhavya_Modi_Resume.pdf?v=2026-10" target="_blank" rel="noopener">
+              <span class="contact__label">Resume</span>
+              <span class="contact__handle">PDF</span>
+              <span class="contact__arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer class="site-footer wrap">
+    <div class="mascot" aria-hidden="true">
+      <!-- Fall: leaf pile with one leaf drifting down -->
+      <svg class="mascot__art" data-season="fall" viewBox="0 0 64 64">
+        <g stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+          <ellipse cx="20" cy="58.5" rx="9" ry="4.3" transform="rotate(-12 20 58.5)" fill="#d9622b" />
+          <ellipse cx="45" cy="58.5" rx="8" ry="4" transform="rotate(-20 45 58.5)" fill="#b5432a" />
+          <ellipse cx="33" cy="59" rx="10" ry="4.3" transform="rotate(8 33 59)" fill="#e8a33d" />
+          <ellipse cx="27" cy="53.5" rx="8" ry="3.8" transform="rotate(15 27 53.5)" fill="#c97a2b" />
+          <ellipse cx="39" cy="53" rx="7" ry="3.5" transform="rotate(-10 39 53)" fill="#d9622b" />
+        </g>
+        <g class="mascot__leaf">
+          <path d="M36 12c5-1 9 2 9 7-5 1-9-2-9-7z" fill="#e8a33d" stroke="currentColor" stroke-width="1.2"
+            stroke-linejoin="round" />
+          <path d="M36 12l9 7" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+        </g>
+      </svg>
+      <!-- Winter: snowman -->
+      <svg class="mascot__art mascot__art--ink" data-season="winter" viewBox="0 0 64 64">
+        <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 47L8 39M11.5 41.4L9.5 37" fill="none" stroke="#8a5a32" stroke-width="1.6" />
+          <g class="mascot__wave">
+            <path d="M44 47l12-9M52.5 40.6L55 36" fill="none" stroke="#8a5a32" stroke-width="1.6" />
+          </g>
+          <circle cx="32" cy="51" r="12.5" fill="#f5f8fc" />
+          <circle cx="32" cy="31" r="9" fill="#f5f8fc" />
+          <path d="M24 38.5q8 4 16 0v3q-8 4-16 0z" style="fill: var(--accent)" />
+          <path d="M35 41l1.5 8 3-.6-1-7.6" style="fill: var(--accent)" />
+          <rect x="27" y="14" width="10" height="9" rx="1" fill="currentColor" style="stroke: var(--hat-edge)" />
+          <rect x="27" y="19" width="10" height="2.2" style="fill: var(--accent); stroke: none" />
+          <path d="M24.5 23h15" style="stroke: var(--hat-edge)" />
+          <path d="M32 32.5l7 1.6-7 1.2z" fill="#ef7d2d" stroke-width="1" />
+        </g>
+        <g fill="#000000">
+          <circle cx="29" cy="29" r="1.1" />
+          <circle cx="35" cy="29" r="1.1" />
+          <circle cx="32" cy="47" r="1.1" />
+          <circle cx="32" cy="53" r="1.1" />
+        </g>
+      </svg>
+      <!-- Spring: flower pot -->
+      <svg class="mascot__art" data-season="spring" viewBox="0 0 64 64">
+        <g class="mascot__sway mascot__sway--flowers" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M32 46C32 36 26 30 24 21" fill="none" />
+          <path d="M32 46C33 38 38 32 41 26" fill="none" />
+          <path d="M30.5 37c-5-.5-7.5-3.5-8-7 4 .2 7.3 3 8 7z" fill="#7cb46b" />
+          <g fill="#f4a6c1">
+            <circle cx="24" cy="14.8" r="3.4" />
+            <circle cx="28" cy="17.7" r="3.4" />
+            <circle cx="26.5" cy="22.4" r="3.4" />
+            <circle cx="21.5" cy="22.4" r="3.4" />
+            <circle cx="20" cy="17.7" r="3.4" />
+          </g>
+          <circle cx="24" cy="19" r="2.3" fill="#f6c445" />
+          <g fill="#f8e3a3">
+            <circle cx="41" cy="20.6" r="2.8" />
+            <circle cx="44.2" cy="22.9" r="2.8" />
+            <circle cx="43" cy="26.7" r="2.8" />
+            <circle cx="39" cy="26.7" r="2.8" />
+            <circle cx="37.8" cy="22.9" r="2.8" />
+          </g>
+          <circle cx="41" cy="24" r="1.9" fill="#f6c445" />
+        </g>
+        <g stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+          <path d="M21.5 47.5h21l-3.5 16h-14z" fill="#c8693f" />
+          <rect x="19.5" y="43" width="25" height="5" rx="1.2" fill="#d97c4f" />
+        </g>
+      </svg>
+      <!-- Summer: beach umbrella -->
+      <svg class="mascot__art" data-season="summer" viewBox="0 0 64 64">
+        <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="55" cy="10" r="4.5" fill="#f6c445" />
+          <path d="M1 64c9-8 53-8 62 0z" fill="#f1d9a6" />
+          <circle cx="15" cy="56" r="4.5" fill="#fff" />
+          <path d="M15 51.5a4.5 4.5 0 0 1 4.4 3.6L15 56z" fill="#e8604c" />
+          <g class="mascot__sway mascot__sway--umbrella">
+            <path d="M31 59L37.5 21" fill="none" />
+            <path d="M19 27C23 13 45 7 56 18q-4.5 0-8.5 3.5Q43 18.5 38 21.5q-5-1-9.5 3Q24 23.5 19 27z"
+              style="fill: var(--accent)" />
+            <path d="M37 11.5C33 15 29.5 20 28.5 24.5M37 11.5C41 14 45 17 47.5 21.5" fill="none" />
+          </g>
+        </g>
+      </svg>
+    </div>
     <span>© 2026 Bhavya Modi</span>
     <a href="#top" class="footer__top">Back to top ↑</a>
   </footer>
 
   <script src="script.js"></script>
+  <script src="seasons.js"></script>
 </body>
 
 </html>
