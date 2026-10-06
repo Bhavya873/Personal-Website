@@ -327,7 +327,7 @@ section {
 }
 
 .hero__photo {
-  border: 1.5px solid #ffffff;
+  border: 2.5px solid #ffffff;
   aspect-ratio: 4 / 5;
   max-width: 360px;
   border-radius: 6px;
@@ -460,7 +460,7 @@ section {
 }
 
 .about__photo {
-  border: 1.5px solid #ffffff;
+  border: 2.5px solid #ffffff;
   aspect-ratio: 4 / 5;
   border-radius: 6px;
   overflow: hidden;
@@ -517,8 +517,8 @@ section {
 }
 
 .ledger__logo {
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   padding: 6px;
   border-radius: 4px;
   background: #fff;
@@ -1159,8 +1159,8 @@ main,
   .ledger__logo {
     grid-row: 2;
     grid-column: 2;
-    width: 44px;
-    height: 44px;
+    width: 54px;
+    height: 54px;
   }
 
   .projects {

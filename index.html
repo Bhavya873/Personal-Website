@@ -17,6 +17,8 @@
       return "winter";
     };
     document.documentElement.setAttribute("data-season", window.seasonForDate());
+    // Dark by default; a saved choice from the toggle wins
+    document.documentElement.setAttribute("data-theme", "dark");
     try {
       const saved = localStorage.getItem("theme");
       if (saved) document.documentElement.setAttribute("data-theme", saved);
